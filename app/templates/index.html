@@ -4,6 +4,9 @@
         <title>Landing Page</title>
         <link rel="stylesheet" href="styles.css"/>
         <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@300&display=swap" rel="stylesheet">
 
     </head>
     <body>
@@ -19,20 +22,23 @@
 
         <div class="container">
             <div class="column">
-              <h4>Welcome to</h4>
-
-              <br>
+              <br><br>
+              <p class="wel">Welcome to</p>
               <p class="work">WorkForce</p>
-              <br>
               <p>
                 We provide you an easy to use interface <br> which makes work easy for both the Employer
                 <br> and our future employee!!! 
-
               </p>
+
+              <button class="sign"><a href=""> Sign Up</a></button>
+
             </div>
             <div class="column" style="background-color:#bbb;">
               <h2>Column 2</h2>
               <p>Some text..</p>
+              <div class="set_img">
+                <img src="static/img/gear.jpg" alt="settinfggs">
+              </div>
             </div>
           </div>
 
