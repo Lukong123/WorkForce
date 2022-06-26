@@ -40,15 +40,10 @@ body {
     padding-right: 80px;
   }
 
-  #work{
-    font-size: larger;
-    font-family: 'Margarine', cursive;
-  }
-
   .container{
     margin: 45px;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 20% 80%;
     gap: 15px;
   }
   .column {
@@ -57,27 +52,26 @@ body {
     padding: 10px;
     
   }
-  .container > .column > .work{
-    font-size: 50px;
-    font-family: 'Margarine', cursive;
-    color: #088F8F;
-    margin-bottom: -10px;
+.photo{
+    font-size: bold;
+    text-align: center;
+    margin-top: -20px;
+}
+.square{
+    height: 150px;
+    width: 150x;
+    margin-top: -10px;
+    margin-left: 80px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: #BFFCFB;
+    background-color: #FF8749;
     
 }
 
-.container > .column > .wel{
-  font-size: 30px;
-  font-weight: 500;
-  margin-bottom: -25px;
-}
-.container > .column > p{
-  font-size: 20px;
-  font-weight: 550;
-  line-height: 1.75em;
-}
-
-.sign{
-  margin-left: 40px;
+.but{
+  margin-left: 18g0px;
+  margin-top: 50px;
   background-color: #FF8749;
   border: #FF8749;
   border-radius: 5px;
@@ -86,9 +80,27 @@ body {
 
 }
 
-.sign > a{
+.but > a{
   color: white;
   text-decoration: none;
   font-size: 15px;
 }
 
+input[type=text], input[type=email], input[type=number], input[type=date] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #088F8F;
+    outline: none;
+}
+
+ .form{
+    font-size:0;
+  }
+form{  
+    font-size: 14px;
+  }
+input {
+    height: 10%;
+    width: 50%;
+    box-sizing: border-box;
+  }
