@@ -10,7 +10,7 @@ body {
     padding-left: 40px;
     padding-top: 20px;
     height: 450px;
-    width: 500px;
+    width: 400px;
     background-color: white;
 
 }
@@ -32,34 +32,25 @@ body {
 input[type=text] {
     border: 1px solid #088F8F;
     border-radius: 10px;
+    margin-top: 5px;
     width: 300px;
-    height: 25px;
-    margin-left: 45px;
-    outline: none;
-}
-
-input[type=email] {
-    border: 1px solid #088F8F;
-    border-radius: 10px;
-    width: 300px;
-    height: 25px;
-    margin-left: 40px;
+    height: 30px;
     outline: none;
 }
 
 input[type=password] {
     border: 1px solid #088F8F;
     border-radius: 10px;
+    margin-top: 5px;
     width: 300px;
-    height: 25px;
-    margin-left: 15px;
+    height: 30px;
     outline: none;
 }
 
 .but{
-    margin-left: 180px;
-    background-color: #FF8749;
-    border: #FF8749;
+    margin-left: 110px;
+    background-color: #088F8F;
+    border: #088F8F;
     border-radius: 5px;
     height: 30px;
     width: 150px;
@@ -74,12 +65,20 @@ input[type=password] {
 
   .alink{
     text-decoration: none;
-    color: #FF8749;
+    color: #088F8F;
   }
 
 .log{
-    padding-left: 120px;
+    padding-left: 110px;
     font-weight: bold;
     font-size: 20px;
+    color: #088F8F;
+}
+
+.lflink{
+    float: right;
+    margin-top: -35px;
+    margin-right: 40px;
+    text-decoration: none;
     color: #088F8F;
 }
