@@ -6,12 +6,15 @@ body {
   
 
   .nav {
+    height: 45px;
+    padding-top: 20px;
     overflow: hidden;
     background-color: #088F8F;
+    
   }
   
   .nav a {
-    float: right;
+    
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
@@ -20,17 +23,26 @@ body {
   }
   
   .nav a:hover {
-    background-color: #ddd;
+    background-color: #59C5C5;
     color: black;
   }
   
   .nav a.active {
-    background-color: #04AA6D;
-    color: #FF8749;
+    background-color: #59C5C5;
+    color: #BFFCFB;
   }
   
   .nav-left{
     float: left;
+  }
+  .nav-right{
+    float: right;
+    padding-right: 80px;
+  }
+
+  #work{
+    font-size: larger;
+    font-family: 'Margarine', cursive;
   }
 
   .container{
