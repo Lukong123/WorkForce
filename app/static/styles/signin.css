@@ -26,7 +26,7 @@ body {
 .create{
     font-size: 20px;
     padding-left: 130px;
-    color: #FF8749;
+    color: #9B5A9A;
 }
 
 input[type=text] {
@@ -47,7 +47,7 @@ input[type=email] {
     outline: none;
 }
 
-input[type=password] {
+input[type=password] , input[type=tel]{
     border: 1px solid #088F8F;
     border-radius: 10px;
     width: 300px;
@@ -58,8 +58,8 @@ input[type=password] {
 
 .but{
     margin-left: 180px;
-    background-color: #FF8749;
-    border: #FF8749;
+    background-color: #9B5A9A;
+    border: #9B5A9A;
     border-radius: 5px;
     height: 30px;
     width: 150px;
@@ -74,7 +74,7 @@ input[type=password] {
 
   .alink{
     text-decoration: none;
-    color: #FF8749;
+    color: #9B5A9A;
   }
 
 .log{
