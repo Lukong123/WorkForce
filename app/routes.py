@@ -13,6 +13,10 @@ def login():
 def user_jobs():
     return render_template('user_jobs.html')
 
+@app.route('/user_profile')
+def user_profile():
+    return render_template('user_profile.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
