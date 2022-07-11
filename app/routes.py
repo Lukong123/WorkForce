@@ -9,6 +9,9 @@ def index():
 def login():
     return render_template('login.html')
 
+@app.route('/user_jobs')
+def user_jobs():
+    return render_template('user_jobs.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
