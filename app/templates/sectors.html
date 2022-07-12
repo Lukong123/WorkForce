@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dashboard</title>
+        <title>Sector</title>
         <link rel="stylesheet" href="emp_dashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,8 @@
                 <a id="work" href="#work">WorkForce</a>
             </div>
             <div class="nav-right">
-              <a class="active" href="#dashboard">Dashboard</a>
-              <a href="sectors.html"> Sectors</a>
+              <a href="emp_dashboard.html">Dashboard</a>
+              <a class="active"  href="sectors.html"> Sectors</a>
               <a href={{ url_for('user_jobs')}}> Jobs</a>
               <a href="">Candidates</a>
               <a href={{ url_for('user_profile')}}>Profile</a>
@@ -26,9 +26,9 @@
             <div class="column">
               <br><br>
               <a class = "big_link" href="emp_jobs.html">
-                <div class="cover1">
-                  <p class="big">Opened Jobs</p>
-                  <p class="number_count">12</p>
+                <div class="sector1">
+                  <p class="big">HR Department</p>
+                  <p class="number_count">2</p>
   
                 </div>
               </a>
@@ -38,9 +38,21 @@
             <div class="column">
                 <br><br>
                 <a  class="big_link" href="candidates.html">
-                  <div class="cover2">
-                    <p class="big">Candidates</p>
-                    <p class="number_count">23</p>
+                  <div class="sector2">
+                    <p class="big">Legal</p>
+                    <p class="number_count">3</p>
+    
+                  </div>
+                </a>
+                
+            </div>
+
+            <div class="column">
+                <br><br>
+                <a  class="big_link" href="approved.html">
+                  <div class="sector3">
+                    <p class="big">IT Department</p>
+                    <p class="number_count">12</p>
     
                   </div>
                 </a>
@@ -50,14 +62,12 @@
               <div class="column">
                 <br><br>
                 <a  class="big_link" href="approved.html">
-                  <div class="cover3">
-                    <p class="big">Approved</p>
-                    <p class="number_count">12</p>
+                  <div class="sector4">
+                    <p class="big">Create New Sector</p>
+                    <p class="jclick">Just click</p>
     
                   </div>
                 </a>
-                
-              </div>
 
          </div>
 
