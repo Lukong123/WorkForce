@@ -14,8 +14,11 @@
             <p class="s_create"> Create Your Free Account</p>
             <br><br>
             <button class="choice_but"><a href={{ url_for('signup_emp')}}> Create Employer Account</a></button>
-            <button class="choice_but"><a href={{ url_for('signup_user)}}> Create User Account</a></button>
-            <p ><a class="slink" href={{ url_for('login')}}>Already have an account?</a></p>
+            <button class="choice_but"><a href={{ url_for('signup_user')}}> Create User Account</a></button>
+            
+            <!-- Already have an account link is causing an internal error-->
+
+            <a class="slink" href="">Already have an account?</a>
         </div>
     </body>
 </html>
