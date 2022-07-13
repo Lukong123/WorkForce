@@ -1,5 +1,7 @@
+from turtle import title
 from flask import Flask, render_template
 from app import app
+from app.forms import LoginForm
 
 @app.route('/')
 def index():
@@ -7,7 +9,8 @@ def index():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
 
 @app.route('/user_jobs')
 def user_jobs():

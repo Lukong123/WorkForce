@@ -11,11 +11,13 @@
     <body>
         <div class="box">
             <p class="log"> Login to WorkForce</p>
-            <form action="get">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
                 <label for="Uname"> Username</label><br>
-                <input type="text", id="u_name"> <br><br>
+                <input type="text", id="Username"> <br><br>
                 <label for="u_pwd"> Password</label><br>
-                <input type="password" name="pwd" id="u_pwd"><br><br>
+                <input type="password" name="Password" id="u_pwd"><br><br>
+                <p> {{ form.remember_me() }} {{ form.remember_me.label}} </p>
                 
             </form>
             <p ><a class="alink" href="#">Forgot Password?</a></p>
