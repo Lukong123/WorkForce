@@ -12,16 +12,37 @@
         <div class="box">
             <p class="log"> Login to WorkForce</p>
             <form action="" method="post" novalidate>
-                <label for="Uname"> Username</label><br>
-                <input type="text", id="u_name"> <br><br>
-                <label for="u_pwd"> Password</label><br>
-                <input type="password" name="pwd" id="u_pwd"><br><br>
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username }}
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password }}
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                
                 <p> {{ form.remember_me() }} {{ form.remember_me.label}} </p>
                 
             </form>
             <p ><a class="alink" href="#">Forgot Password?</a></p>
             <p class="lf"><a class="lflink" href={{ url_for('signup')}}>Create Account</a></p>
-            <button class="but"><a href={{ url_for('user_jobs')}}> Log In</a></button>
+            <button class="but"><a href={{ url_for('user_jobs')}}> {{ form.submit }} Log In </a></button>
+            {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </ul>
         </div>
     </body>
 </html>
