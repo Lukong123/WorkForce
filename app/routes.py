@@ -33,6 +33,10 @@ def signup():
 def signup_emp():
     return render_template('signup_emp.html')
 
+@app.route('/signup_user')
+def signup_user():
+    return render_template('signup_user.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
