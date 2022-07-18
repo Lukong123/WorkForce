@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Sign Up Client</title>
+        <title> Login </title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
@@ -32,7 +32,6 @@
                 
             </form>
             <p ><a class="alink" href="#">Forgot Password?</a></p>
-<<<<<<< HEAD
             <p class="lf"><a class="lflink" href={{ url_for('signup')}}>Create Account</a></p>
             <button class="but"><a href={{ url_for('user_jobs')}}> {{ form.submit }} Log In </a></button>
             {% with messages = get_flashed_messages() %}
@@ -44,14 +43,6 @@
             {% endif %}
             {% endwith %}
         </ul>
-=======
-
-            <!-- Create Account link is causing an internal error-->
-
-            <p class="lf"><a class="lflink" href="">Create Account</a></p>
-
-            <button class="but"><a href={{ url_for('user_jobs')}}> Log In</a></button>
->>>>>>> fce920aeff5892dd8c31e49866e910d7627fc61b
         </div>
     </body>
 </html>

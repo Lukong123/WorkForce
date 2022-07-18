@@ -32,3 +32,13 @@ class Sector(db.Model):
 
     def __repr__(self):
         return '<Sector {}>'.format(self.sectorname)
+
+class Jobs(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    jobname = db.Column(db.String(64), index=True, unique=True)
+    description = db.Column(db.String(200), index=True, unique=False)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+
+    def __repr__(self):
+        return '<Sector {}>'.format(self.sectorname)

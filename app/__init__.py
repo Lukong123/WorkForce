@@ -1,9 +1,9 @@
-import imp
 from flask import Flask
 from config import Config
-<<<<<<< HEAD
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
+db = SQLAlchemy()
 
 
 app = Flask(__name__)
@@ -11,10 +11,27 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-=======
-
-app = Flask(__name__)
-app.config.from_object(Config)
->>>>>>> fce920aeff5892dd8c31e49866e910d7627fc61b
 
 from app import routes, models
+"""
+db = SQLAlchemy()
+
+def create_app():
+    app = Flask(__name__)
+
+    app.config['SECRET_KEY'] = 'secret-key-goes-here'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+
+    db.init_app(app)
+
+    # blueprint for auth routes in our app
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint)
+
+    # blueprint for non-auth parts of app
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    return app
+
+"""
