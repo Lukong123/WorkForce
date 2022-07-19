@@ -22,7 +22,7 @@ class Company(db.Model):
 
     def __repr__(self):
         return '<Company {}>'.format(self.companyname)
-
+"""
 class Sector(db.Model):
     sector_id = db.Column(db.Integer, primary_key=True)
     sectorname = db.Column(db.String(64), index=True, unique=True)
@@ -41,4 +41,6 @@ class Jobs(db.Model):
     sector_id = db.Column(db.Integer, db.ForeignKey('sector.id'))
 
     def __repr__(self):
-        return '<Sector {}>'.format(self.sectorname)
+        return '<Jobs {}>'.format(self.job_name)
+
+"""
