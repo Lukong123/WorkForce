@@ -1,23 +1,30 @@
 from turtle import title
-from flask import Flask, render_template
+from urllib.parse import urlparse
+from flask import Flask, flash, redirect, render_template, url_for, request
 from app import app
 from app.forms import LoginForm
+from flask_login import current_user, login_user, logout_user, login_required
+from app.models import User
+from werkzeug.urls import url_parse
+from app import db
+
+
 
 @app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 
-@app.route('/login')
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        flash('Login requested  ro user {}, remember_me={}'.format(
-            form.username.data, form.remember_me.data))
-        return redirect(url_for('/index'))
 
-    return render_template('login.html', title='Login', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
 
 @app.route('/user_jobs')
+@login_required
 def user_jobs():
     return render_template('user_jobs.html')
 
