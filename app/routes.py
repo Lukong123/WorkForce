@@ -1,5 +1,5 @@
 from turtle import title
-from flask import Flask, render_template, flash, redirect, url_for
+from flask import Flask, render_template
 from app import app
 from app.forms import LoginForm
 
@@ -7,7 +7,7 @@ from app.forms import LoginForm
 def index():
     return render_template('index.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def login():
     form = LoginForm()
     if form.validate_on_submit():
