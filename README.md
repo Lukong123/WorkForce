@@ -19,7 +19,7 @@ This will fascilitate they manner of recruiting and also their advertising posit
 
 ## How is this app created
 
-![Flask](img/flask.jpeg?raw=true "Title")![HTML](img/html.png?raw=true "Title" =100*50)![CSS](img/css.png?raw=true "Title")
+![Flask](img/flask.jpeg?raw=true "Title")![HTML](img/html.png?raw=true {:height="36px" width="36px"}. "Title")![CSS](img/css.png?raw=true "Title")
 
 This application is created using:
 - Flask
