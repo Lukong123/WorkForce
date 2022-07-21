@@ -1,6 +1,7 @@
 from turtle import title
 from urllib.parse import urlparse
 from flask import Flask, flash, redirect, render_template, url_for, request
+from flask_login import current_user, login_user, logout_user, login_required
 from app import app
 from app.forms import LoginForm
 from app.models import User
@@ -14,12 +15,14 @@ from app import db
 def index():
     return render_template('index.html')
 
-
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 @app.route('/logout')
 def logout():
+    logout_user()
     return redirect(url_for('index'))
-
 
 @app.route('/user_jobs')
 def user_jobs():
