@@ -13,9 +13,40 @@
             <p class="workf"> WorkForce</p>
             <p class="create"> Create User Account</p>
 
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username(size=32) }}<br>
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.email.label }}<br>
+                    {{ form.email(size=64) }}<br>
+                    {% for error in form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password(size=32) }}<br>
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password2.label }}<br>
+                    {{ form.password2(size=32) }}<br>
+                    {% for error in form.password2.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
             
-            
-            <form action="get">
+           <!-- <form action="get">
                 <label for="Uname"> Username</label>
                 <input type="text", id="u_name"> <br><br>
                 <label for="email">Email</label>
@@ -25,7 +56,7 @@
                 <label for="u_pwd">Confirm Password</label>
                 <input type="password" name="pwd" id="u_pwd">
                 
-            </form>
+            </form> -->
             <p ><a class="alink" href={{ url_for('login')}}>Already have an account?</a></p>
             <button class="but"><a href="#"> Create Account</a></button>
         </div>

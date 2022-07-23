@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 from flask import Flask, flash, redirect, render_template, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app
-from app.forms import LoginForm
+from app.forms import LoginForm, RegistrationForm
 from app.models import User
 from werkzeug.urls import url_parse
 from app import db
@@ -12,7 +12,6 @@ from app import db
 
 @app.route('/')
 @app.route('/index')
-@login_required
 def index():
     
     return render_template('index.html')
@@ -39,6 +38,7 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/user_jobs')
+@login_required
 def user_jobs():
     return render_template('user_jobs.html')
 
@@ -57,6 +57,20 @@ def signup_emp():
 @app.route('/signup_user')
 def signup_user():
     return render_template('signup_user.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login', title='Sign In', form=form))
+    return render_template('register.html', title='Register', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
