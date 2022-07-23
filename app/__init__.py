@@ -11,5 +11,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login_manager = LoginManager()
 
+login = LoginManager(app)
+login.login_view = 'login'
 
 from app import routes, models
