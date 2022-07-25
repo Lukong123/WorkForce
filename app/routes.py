@@ -20,17 +20,19 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
+        flash('You are already signed in')
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
+        if not user or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        return render_template(url_for('user_jobs'))
+        return render_template('user_jobs.html')
     return render_template('login.html', title='Sign In', form=form)
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
@@ -41,6 +43,7 @@ def user_jobs():
     return render_template('user_jobs.html')
 
 @app.route('/user_profile')
+@login_required
 def user_profile():
     return render_template('user_profile.html')
 
@@ -56,7 +59,13 @@ def signup_emp():
 def signup_user():
     form = RegistrationForm()
     if form.validate_on_submit():
-        return render_template('user_jobs.html')
+        flash('Congratulations, you are now a registered user!')
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return redirect(url_for('user_jobs.html'))
     return render_template('signup_user.html', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -70,7 +79,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
+        login_user(user, remember=form.remember_me.data)
+        return redirect(url_for('user_jobs'))
     return render_template('register.html', title='Register', form=form)
 
 if __name__ == '__main__':
