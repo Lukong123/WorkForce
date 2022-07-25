@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Landing Page</title>
+        <title>Home | WorkForce</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,9 @@
               <a href={{ url_for('login')}}>Login</a>
             </div>     
         </div>
-
+        {% for message in get_flashed_messages() %}
+          {{ message }} <br>
+        {% endfor %}
         <div class="container">
             <div class="column">
               <br><br>

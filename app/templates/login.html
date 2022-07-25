@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Login </title>
+        <title> Login | WorkForce</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
         <div class="box">
             <p class="log"> Login to WorkForce</p>
        
-            <form action="" method="post" novalidate>
+            <form method="post" novalidate>
                 {{ form.hidden_tag() }}
                 {% for message in get_flashed_messages() %}
                 {{ message }}
