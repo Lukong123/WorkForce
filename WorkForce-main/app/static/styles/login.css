@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #BFFCFB;
+}
+  
+.box{
+    margin-left: 375px;
+    margin-top: 120px;
+    padding-left: 40px;
+    padding-top: 20px;
+    height: 450px;
+    width: 400px;
+    background-color: white;
+
+}
+
+.workf{
+    font-family: 'Margarine', cursive;
+    color: #088F8F;
+    font-weight: bold;
+    font-size: 25px;
+    padding-left: 150px;
+}
+
+.create{
+    font-size: 20px;
+    padding-left: 130px;
+    color: #FF8749;
+}
+
+input[type=text] {
+    border: 1px solid #088F8F;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    outline: none;
+}
+
+input[type=password] {
+    border: 1px solid #088F8F;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    outline: none;
+}
+
+.but{
+    margin-left: 110px;
+    background-color: #088F8F;
+    border: #088F8F;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+  
+  }
+  
+  .but> a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+  .alink{
+    text-decoration: none;
+    color: #088F8F;
+  }
+
+.log{
+    padding-left: 110px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #088F8F;
+}
+
+.lflink{
+    float: right;
+    margin-top: -35px;
+    margin-right: 40px;
+    text-decoration: none;
+    color: #088F8F;
+}
+
+.set_img > .img{
+    width: 250px;
+    height: 350px;
+}

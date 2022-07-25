@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/user_profile.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="nav">
+            <div class="nav-left">
+                <a id="work" href="#work">WorkForce</a>
+            </div>
+            <div class="nav-right">
+              <a href="#dashboard">Dashboard</a>
+              <a href={{ url_for('user_jobs')}}>Jobs</a>
+              <a class="active" href={{ url_for('user_profile')}}>Profile</a>
+              <a href="#orient">Orientation</a>
+            </div>     
+        </div>
+
+        <div class="container">
+            <div class="column">
+              <br><br>
+              <div class="phot">
+                <p class="photo">Photo</p>
+                <div class="square"></div>
+
+              </div>
+            </div>
+            <div class="column">
+                <br><br><br>
+              <div class="form">
+                <form action="GET">
+                    <label for="fname"> First Name</label>
+                    <input type="text", id="fname"> <br><br>
+                    <label for="lname">Last Name</label>
+                    <input type="text" name="" id="lname"> <br><br>
+                    <label for="dob">Date Of Birth</label>
+                    <input type="date" name="" id="dob"><br><br>
+                    <label for="G"> Gender</label>
+                    <input type="text" id="gen"><br><br>
+                    <label for="country">Country</label>
+                    <input type="text" id="country"> <br><br>
+                    <label for="address">Address</label>
+                    <input type="text" id="address"><br><br>
+                    <label for="tel">Tel</label>
+                    <input type="number" id="tel"><br><br>
+                    <label for="mail">Email</label>
+                    <input type="email" id="mail"><br><br>
+                    <label for="pjob">Previous Job</label>
+                    <input type="text" id="pjob">
+                </form>
+                <br><br><br>
+                <button class="but" ><a href="">Save</a></button>
+              </div>
+            </div>
+          </div>
+
+    </body>
+    <footer>
+
+    </footer>
+</html>

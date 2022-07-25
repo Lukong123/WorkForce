@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+  
+  
+
+  .nav {
+    height: 45px;
+    padding-top: 20px;
+    overflow: hidden;
+    background-color: #088F8F;
+    
+  }
+  
+  .nav a {
+    
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .nav a:hover {
+    background-color: #59C5C5;
+    color: #FF8749;
+  }
+  
+  .nav a.active {
+    background-color: #59C5C5;
+    color: #BFFCFB;
+  }
+  
+  .nav-left{
+    float: left;
+  }
+  .nav-right{
+    float: right;
+    padding-right: 80px;
+  }
+
+  .container{
+    margin: 45px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 15px;
+  }
+  .column {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    
+  }
+.photo{
+    font-size: bold;
+    text-align: center;
+    margin-top: -20px;
+}
+.square{
+    height: 150px;
+    width: 150x;
+    margin-top: -10px;
+    margin-left: 80px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: #BFFCFB;
+    background-color: #FF8749;
+    
+}
+
+.but{
+  margin-left: 18g0px;
+  margin-top: 50px;
+  background-color: #FF8749;
+  border: #FF8749;
+  border-radius: 5px;
+  height: 30px;
+  width: 100px;
+
+}
+
+.but > a{
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+input[type=text], input[type=email], input[type=number], input[type=date] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #088F8F;
+    outline: none;
+}
+
+ .form{
+    font-size:0;
+  }
+form{  
+    font-size: 14px;
+  }
+input {
+    height: 10%;
+    width: 50%;
+    box-sizing: border-box;
+  }

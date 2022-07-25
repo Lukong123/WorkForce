@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #BFFCFB;
+}
+  
+.box{
+    margin-left: 375px;
+    margin-top: 120px;
+    padding-left: 40px;
+    padding-top: 20px;
+    height: 450px;
+    width: 500px;
+    background-color: white;
+
+}
+
+.workf{
+    font-family: 'Margarine', cursive;
+    color: #088F8F;
+    font-weight: bold;
+    font-size: 25px;
+    padding-left: 150px;
+}
+
+.create{
+    font-size: 20px;
+    padding-left: 130px;
+    color: #9B5A9A;
+}
+
+input[type=text] {
+    border: 1px solid #088F8F;
+    border-radius: 10px;
+    width: 300px;
+    height: 25px;
+    margin-left: 45px;
+    outline: none;
+}
+
+input[type=email] {
+    border: 1px solid #088F8F;
+    border-radius: 10px;
+    width: 300px;
+    height: 25px;
+    margin-left: 40px;
+    outline: none;
+}
+
+input[type=password] , input[type=tel]{
+    border: 1px solid #088F8F;
+    border-radius: 10px;
+    width: 300px;
+    height: 25px;
+    margin-left: 15px;
+    outline: none;
+}
+
+.but{
+    margin-left: 180px;
+    background-color: #9B5A9A;
+    border: #9B5A9A;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+  
+  }
+  
+  .but> a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+  .alink{
+    text-decoration: none;
+    color: #9B5A9A;
+  }
+
+.log{
+    padding-left: 120px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #088F8F;
+}
+
+.choice_but{
+    background-color: #088F8F;
+    border-radius: 10px;
+    border:1px solid #088F8F;
+    width: 300px;
+    height: 35px;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-left: 100px;
+
+}
+
+.choice_but> a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
+.s_create{
+    font-size: 20px;
+    padding-left: 130px;
+    color: #9B5A9A;
+}
+
+.slink{
+    text-decoration: none;
+    color: #9B5A9A;
+    margin-left: 130px;
+  }

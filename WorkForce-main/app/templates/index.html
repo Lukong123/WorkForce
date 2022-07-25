@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Landing Page</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="nav">
+            <div class="nav-left">
+                <a id="work" href="#work">WorkForce</a>
+            </div>
+            <div class="nav-right">
+              <a class="active" href="#home">Home</a>
+              <a href="#about">About Us</a>
+              <a href="#contact">Contact Us</a>
+              <a href={{ url_for('login')}}>Login</a>
+            </div>     
+        </div>
+
+        <div class="container">
+            <div class="column">
+              <br><br>
+              <p class="wel">Welcome to</p>
+              <p class="work">WorkForce</p>
+              <p>
+                We provide you an easy to use interface <br> which makes work easy for both the Employer
+                <br> and our future employee!!! 
+              </p>
+
+              <button class="sign"><a href={{ url_for('signup')}}> Sign Up</a></button>
+
+            </div>
+            <div class="column">
+              <div class="set_img">
+                <br><br><br><br><br><br><br>
+                <img  src="{{ url_for('static', filename='images/workset.png') }}"/>
+
+              </div>
+            </div>
+          </div>
+
+    </body>
+    <footer>
+
+    </footer>
+</html>
