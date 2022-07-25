@@ -6,13 +6,11 @@ from flask_login import UserMixin
 from app import login
 
 
-
-
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
-class User(UserMixin, db.Model):
+class User(UserMixin,db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
@@ -26,6 +24,9 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    db.create_all()
+    db.session.commit()
 
 class Company(db.Model):
     company_id = db.Column(db.Integer, primary_key=True)
@@ -36,6 +37,8 @@ class Company(db.Model):
 
     def __repr__(self):
         return '<Company {}>'.format(self.companyname)
+    db.create_all()
+    db.session.commit()
 
 class Sector(db.Model):
     sector_id = db.Column(db.Integer, primary_key=True)
@@ -45,6 +48,9 @@ class Sector(db.Model):
     
     def __repr__(self):
         return '<Sector {}>'.format(self.sectorname)
+    
+    db.create_all()
+    db.session.commit()
 
 class Jobs(db.Model):
     job_id = db.Column(db.Integer, primary_key=True)
@@ -54,6 +60,9 @@ class Jobs(db.Model):
     
     def __repr__(self):
         return '<Sector {}>'.format(self.sectorname)
+    
+    db.create_all()
+    db.session.commit()
 
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -65,3 +74,8 @@ class Student(db.Model):
 
     def __repr__(self):
         return f'<Student {self.firstname}>'
+    
+
+    db.create_all()
+    db.session.commit()
+

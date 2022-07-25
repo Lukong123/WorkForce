@@ -27,10 +27,12 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
-        return redirect(next_page)
+        return render_template(url_for('user_jobs'))
+        # next_page = request.args.get('next')
+        # return render_template(url_for('user_jobs'))
+        # if not next_page or url_parse(next_page).netloc != '':
+        #     next_page = url_for('index')
+        # return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 @app.route('/logout')
 def logout():
@@ -54,9 +56,10 @@ def signup():
 def signup_emp():
     return render_template('signup_emp.html')
 
-@app.route('/signup_user')
+@app.route('/signup_user', methods=['GET', 'POST'])
 def signup_user():
-    return render_template('signup_user.html')
+    form = RegistrationForm()
+    return render_template('signup_user.html', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -69,7 +72,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login', title='Sign In', form=form))
+        return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
 if __name__ == '__main__':

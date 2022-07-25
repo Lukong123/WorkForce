@@ -14,6 +14,11 @@
        
             <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
+                {% for message in get_flashed_messages() %}
+                {{ message }}
+                <br>
+                {% endfor %}
+        
                 <p>
                     {{ form.username.label }}<br>
                     {{ form.username }}
@@ -29,11 +34,11 @@
                     {% endfor %}
                 </p>
                 <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-                <p>{{ form.submit() }}</p>
+                <a>{{ form.submit(href="url_for('user_jobs')", class="but") }}</a>
             </form>
             <p ><a class="alink" href="#">Forgot Password?</a></p>
-            <p class="lf"><a class="lflink" href={{ url_for('signup')}}>Create Account</a></p>
-            <button class="but"><a href={{ url_for('user_jobs')}}> Log In</a></button>
+            <p class="lf"><a class="lflink" href={{ url_for('signup') }}>Create Account</a></p>
+            <button class="but"><a > Log In</a></button>
       
         </div>
     </body>

@@ -91,4 +91,8 @@ class RegistrationForm(FlaskForm):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
-    
+    ===============================
+    class Config(object):
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard-work-pays'
+    SQLAlCHEMY_DATABASE_URI = 'sqlite:///app.db'
+    SQLACHEMY_TRACK_MODIFICATIONS = False
