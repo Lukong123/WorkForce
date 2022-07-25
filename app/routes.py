@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 import os, sys
 sys.path.insert(0, os.path.abspath("."))
 from app import app
-from forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm
 from app.models import User
 from werkzeug.urls import url_parse
 from app import db
@@ -15,7 +15,6 @@ from app import db
 @app.route('/')
 @app.route('/index')
 def index():
-    
     return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -30,11 +29,6 @@ def login():
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         return render_template(url_for('user_jobs'))
-        # next_page = request.args.get('next')
-        # return render_template(url_for('user_jobs'))
-        # if not next_page or url_parse(next_page).netloc != '':
-        #     next_page = url_for('index')
-        # return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 @app.route('/logout')
 def logout():
@@ -61,6 +55,8 @@ def signup_emp():
 @app.route('/signup_user', methods=['GET', 'POST'])
 def signup_user():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        return render_template('user_jobs.html')
     return render_template('signup_user.html', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
