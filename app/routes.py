@@ -28,7 +28,7 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         elif login_user(user, remember=form.remember_me.data):
-            flash('You successfully logged in')
+            # flash('You successfully logged in')
             return redirect(url_for('user_jobs'))
     return render_template('login.html', title='Sign In', form=form)
 
