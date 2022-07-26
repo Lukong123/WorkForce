@@ -11,7 +11,6 @@ from werkzeug.urls import url_parse
 from app import db
 
 
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -32,6 +31,8 @@ def login():
             flash('You successfully logged in')
             return redirect(url_for('user_jobs'))
     return render_template('login.html', title='Sign In', form=form)
+
+
 @app.route('/logout')
 @login_required
 def logout():
