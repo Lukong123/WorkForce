@@ -67,7 +67,7 @@ def signup_user():
         db.create_all()
         login_user(user)
         flash('Congratulations, you just created an account')
-        return redirect(url_for('/login'))
+        return redirect(url_for('login'))
     return render_template('signup_user.html', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
