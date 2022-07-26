@@ -16,7 +16,7 @@
             <form method="post" novalidate>
                 {{ form.hidden_tag() }}
                 {% for message in get_flashed_messages() %}
-                <div class="alert alert-danger">{{ message }} </div><br>
+                <div class="alert alert-danger my-none">{{ message }} </div><br>
                 <br>
                 {% endfor %}
         
@@ -24,22 +24,21 @@
                     {{ form.username.label }}<br>
                     {{ form.username }}
                     {% for error in form.username.errors %} <br> <br>
-                    <span style="color: red;">[{{ error }}]</span> 
+                    <span style="color: red;">{{ error }}</span> 
                     {% endfor %}
                 </p>
                 <p>
                     {{ form.password.label }}<br>
                     {{ form.password}}
                     {% for error in form.username.errors %} <br> <br>
-                    <span style="color: red; ">[{{ error }}]</span>
+                    <span style="color: red; ">{{ error }}</span>
                     {% endfor %}
                 </p>
                 <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-                <a>{{ form.submit(href="url_for('user_jobs')", class="but") }}</a>
+                <a>{{ form.submit(class="but") }}</a>
             </form>
             <p ><a class="alink" href="#">Forgot Password?</a></p>
             <p class="lf"><a class="lflink" href={{ url_for('signup') }}>Create Account</a></p>
-            <button class="but"><a > Log In</a></button>
       
         </div>
     </body>

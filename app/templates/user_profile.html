@@ -12,7 +12,7 @@
     <body>
         <div class="nav">
             <div class="nav-left">
-                <a id="work" href="#work">WorkForce</a>
+                <a id="work" href="/">WorkForce</a>
             </div>
             <div class="nav-right">
               <a href="#dashboard">Dashboard</a>
@@ -36,7 +36,7 @@
               <div class="form">
                 <form action="GET">
                     <label for="fname"> First Name</label>
-                    <input type="text", id="fname"> <br><br>
+                    <input type="text", id="fname" value="{{ current_user.username }}"> <br><br>
                     <label for="lname">Last Name</label>
                     <input type="text" name="" id="lname"> <br><br>
                     <label for="dob">Date Of Birth</label>
@@ -50,7 +50,7 @@
                     <label for="tel">Tel</label>
                     <input type="number" id="tel"><br><br>
                     <label for="mail">Email</label>
-                    <input type="email" id="mail"><br><br>
+                    <input type="email" id="mail" value="{{ current_user.email }}"><br><br>
                     <label for="pjob">Previous Job</label>
                     <input type="text" id="pjob">
                 </form>

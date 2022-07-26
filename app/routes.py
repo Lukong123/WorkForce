@@ -19,17 +19,21 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        flash('You are already signed in')
-        return redirect(url_for('index'))
+        flash('You are already signed in', 'warning')
+        return redirect(url_for('user_jobs'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if not user or not user.check_password(form.password.data):
-            flash('Invalid username or password')
+            flash('Invalid username or password', 'error')
             return redirect(url_for('login'))
-        elif login_user(user, remember=form.remember_me.data):
-            # flash('You successfully logged in')
-            return redirect(url_for('user_jobs'))
+        db.session.add(user)
+        db.session.commit()
+        login_user(user, remember=form.remember_me.data)
+        if current_user.is_active:
+            flash(f'You successfully logged in as {current_user.email}', 'success')
+            return redirect(request.args.get("next") or url_for("user_jobs"))
+        # return redirect(url_for('user_jobs'))
     return render_template('login.html', title='Sign In', form=form)
 
 
@@ -42,6 +46,7 @@ def logout():
 
 
 @app.route('/user_jobs')
+@login_required
 def user_jobs():
     return render_template('user_jobs.html')
 
@@ -56,10 +61,6 @@ def signup():
     return render_template('signup.html')
 
 
-@app.route('/signup_emp')
-def signup_emp():
-    return render_template('signup_emp.html')
-
 @app.route('/signup_user', methods=['GET', 'POST'])
 def signup_user():
     form = RegistrationForm()
@@ -70,9 +71,29 @@ def signup_user():
         db.session.commit()
         db.create_all()
         login_user(user)
-        flash('Congratulations, you just created an account')
-        return redirect(url_for('login'))
+        if user.is_authenticated:
+            flash('Congratulations, you just created an account', 'success')
+            return redirect(url_for('user_jobs'))
+            
     return render_template('signup_user.html', form=form)
+
+@app.route('/signup_emp', methods=['GET', 'POST'])
+def signup_emp():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        db.create_all()
+        login_user(user)
+        if user.is_authenticated:
+            flash('Congratulations, you just created an employer account', 'success')
+            return redirect(url_for('user_profile'))
+        else:
+            flash('Unable to create account')
+    return render_template('signup_emp.html', form=form)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

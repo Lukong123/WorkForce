@@ -12,17 +12,21 @@
     <body>
         <div class="nav">
             <div class="nav-left">
-                <a id="work" href="#work">WorkForce</a>
+                <a id="work" href="/">WorkForce</a>
             </div>
             <div class="nav-right">
               <a class="active" href="#home">Home</a>
               <a href="#about">About Us</a>
               <a href="#contact">Contact Us</a>
+              {% if current_user.is_active %}
+              <a href={{ url_for("logout") }}>Logout</a>
+              {% else %}
               <a href={{ url_for("login") }}>Login</a>
+              {% endif %}
             </div>     
         </div>
         {% for message in get_flashed_messages() %}
-          <div class="alert alert-success">{{ message }} </div><br>
+          <div class="alert alert-success text-center">{{ message }} </div><br>
         {% endfor %}
         <div class="container">
             <div class="column">
