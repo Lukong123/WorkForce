@@ -40,6 +40,7 @@ def logout():
     flash('You are now logged out')
     return redirect(url_for('index'))
 
+
 @app.route('/user_jobs')
 def user_jobs():
     return render_template('user_jobs.html')
@@ -49,9 +50,11 @@ def user_jobs():
 def user_profile():
     return render_template('user_profile.html')
 
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
 
 @app.route('/signup_emp')
 def signup_emp():
