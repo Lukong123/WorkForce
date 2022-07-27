@@ -6,8 +6,8 @@ body {
 
 
 .nav {
-  height: 45px;
-  padding-top: 20px;
+  height: fit-content;
+  padding: auto;
   overflow: hidden;
   background-color: #088F8F;
   
@@ -37,6 +37,8 @@ body {
 }
 .nav-right{
   float: right;
+  position: absolute;
+  right: 15px;
   padding-right: 80px;
 }
 
@@ -47,9 +49,9 @@ body {
 
 .container{
   margin: 45px;
-  display: grid;
+  /* display: grid;
   grid-template-columns: 50% 50%;
-  gap: 15px;
+  gap: 15px; */
 }
 .column {
   float: left;
@@ -57,7 +59,7 @@ body {
   padding: 10px;
   
 }
-.container > .column > .work{
+.cont .work{
   font-size: 50px;
   font-family: 'Margarine', cursive;
   color: #088F8F;
@@ -65,12 +67,12 @@ body {
   
 }
 
-.container > .column > .wel{
+.cont .wel{
 font-size: 30px;
 font-weight: 500;
 margin-bottom: -25px;
 }
-.container > .column > p{
+.cont p{
 font-size: 20px;
 font-weight: 550;
 line-height: 1.75em;

@@ -5,13 +5,6 @@ body {
   
   
 
-  .nav {
-    height: 45px;
-    padding-top: 20px;
-    overflow: hidden;
-    background-color: #088F8F;
-    
-  }
   
   .nav a {
     
@@ -52,8 +45,8 @@ body {
   }
   .container{
     margin: 45px;
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
     gap: 15px;
   }
   .container:after {

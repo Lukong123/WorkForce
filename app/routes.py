@@ -6,7 +6,7 @@ import os, sys
 sys.path.insert(0, os.path.abspath("."))
 from app import app
 from .forms import LoginForm, RegistrationForm
-from app.models import User
+from app.models import Company, User
 from werkzeug.urls import url_parse
 from app import db
 
@@ -14,7 +14,7 @@ from app import db
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title='Home')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -48,17 +48,17 @@ def logout():
 @app.route('/user_jobs')
 @login_required
 def user_jobs():
-    return render_template('user_jobs.html')
+    return render_template('user_jobs.html', title='Jobs')
 
 @app.route('/user_profile')
 @login_required
 def user_profile():
-    return render_template('user_profile.html')
+    return render_template('user_profile.html', title='Your Profile')
 
 
 @app.route('/signup')
 def signup():
-    return render_template('signup.html')
+    return render_template('signup.html', title='Create Account')
 
 
 @app.route('/signup_user', methods=['GET', 'POST'])
@@ -81,7 +81,7 @@ def signup_user():
 def signup_emp():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = Company(companyname=form.companyname.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()

@@ -12,6 +12,7 @@ from app import app
 def load_user(id):
     return User.query.get(id)
 
+
 class User(UserMixin,db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -43,6 +44,10 @@ class Company(db.Model):
 
     def __repr__(self):
         return '<Company {}>'.format(self.companyname)
+    
+    def get_id(self):
+        return self.company_id
+
     db.create_all()
     db.session.commit()
 

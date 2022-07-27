@@ -1,32 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-        {% if title %}
-        <title>{{ title }} - Microblog</title>
-        {% else %}
-        <title>Welcome to Microblog</title>
-        {% endif %}
+        <title>{{ title }} | WorkForce</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
     </head>
     <body>
-        <div>
-            Microblog:
-            <a href="{{ url_for('index') }}">Home</a>
-            {% if current_user.is_anonymous %}
-            <a href="{{ url_for('login') }}">Login</a>
-            {% else %}
-            <a href="{{ url_for('logout') }}">Logout</a>
-            {% endif %}
+        <div class="nav py-3">
+            <div class="nav-left">
+                <a id="work" href="/">WorkForce</a>
+            </div>
+            <div class="nav-right float-end">
+              <a class="active" href="/">Home</a>
+              <a href="#about">About Us</a>
+              <a href="#contact">Contact Us</a>
+              {% if current_user.is_active %}
+              <a href={{ url_for("logout") }}>Logout</a>
+              {% else %}
+              <a href={{ url_for("login") }}>Login</a>
+              {% endif %}
+              {% if current_user.is_active %}
+              <a href="{{ url_for('user_profile')}}" title="Your Profile">{{ current_user.username }} </a>
+              {% endif %}
+            </div>     
         </div>
-        <hr>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
+        {% for message in get_flashed_messages() %}
+          <div class="alert alert-success text-center">{{ message }} </div><br>
+        {% endfor %}
+
+        {% block content %}
+        {% endblock %}
     </body>
 </html>

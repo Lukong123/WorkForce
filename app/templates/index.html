@@ -1,35 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Home | WorkForce</title>
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
-
-    </head>
-    <body>
-        <div class="nav">
-            <div class="nav-left">
-                <a id="work" href="/">WorkForce</a>
-            </div>
-            <div class="nav-right">
-              <a class="active" href="#home">Home</a>
-              <a href="#about">About Us</a>
-              <a href="#contact">Contact Us</a>
-              {% if current_user.is_active %}
-              <a href={{ url_for("logout") }}>Logout</a>
-              {% else %}
-              <a href={{ url_for("login") }}>Login</a>
-              {% endif %}
-            </div>     
-        </div>
-        {% for message in get_flashed_messages() %}
-          <div class="alert alert-success text-center">{{ message }} </div><br>
-        {% endfor %}
-        <div class="container">
-            <div class="column">
+{% extends "base.html" %}
+{% block content %}
+        <div class="cont row justify-content-center">
+            <div class="column col-4">
               <br><br>
               
               <p class="wel">Welcome to</p>
@@ -42,7 +14,7 @@
               <button class="sign"><a href={{ url_for('signup')}}> Sign Up</a></button>
 
             </div>
-            <div class="column">
+            <div class="col-4">
               <div class="set_img">
                 <br><br><br><br><br><br><br>
                 <img  src="{{ url_for('static', filename='images/workset.png') }}"/>
@@ -50,9 +22,4 @@
               </div>
             </div>
           </div>
-
-    </body>
-    <footer>
-
-    </footer>
-</html>
+{% endblock %}

@@ -1,71 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Jobs</title>
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/user_jobs.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/user_jobs.css') }}">
 
-    </head>
-    <body>
-        <div class="nav">
-            <div class="nav-left">
-                <a id="work" href="/">WorkForce</a>
-            </div>
-            <div class="nav-right">
-              <a href="#dashboard">Dashboard</a>
-              <a class="active" href={{ url_for('user_jobs')}}>Jobs</a>
-              <a href={{ url_for('user_profile')}}>Profile</a>
-              <a href="#orient">Orientation</a>
-              <a href={{ url_for('index')}}>Logout</a>
-            </div>     
-        </div>
-        {% for message in get_flashed_messages() %}
-          <div class="alert text-center">{{ message }} </div><br>
-        {% endfor %}
-        <hr>
-        <div class="search">
-          <p>Search here</p>
-        </div>
+    <h3 class="bg-secondary py-3 text-white text-center">Hi {{ current_user.username }}, select a position from this list and apply</h3>
+  <div class="container">
+      <div class="column">
+      <br><br>
+      <div class="cover">
+        <p class="Jpost">Digital Marketer</p>
+        <div class="square"></div>
+        <p class="comp">Disney</p>
+        <button class="apply"> <a>Apply</a></button>
 
-        <div class="container">
-          <h1>Hi, {{ current_user.username }}!</h1>
-            <div class="column">
-              <br><br>
-              <div class="cover">
-                <p class="Jpost">Digital Marketer</p>
-                <div class="square"></div>
-                <p class="comp">Disney</p>
-                <button class="apply"> <a>Apply</a></button>
+      </div>
+    </div>
+    <div class="column">
+      <br><br><br>
+      <div class="cover">
+        <p class="Jpost">Digital Marketer</p>
+        <div class="square"></div>
+        <p class="comp">Disney</p>
+        <button class="apply"> <a>Apply</a></button>
 
-              </div>
-            </div>
-            <div class="column">
-                <br><br><br>
-                <div class="cover">
-                  <p class="Jpost">Digital Marketer</p>
-                  <div class="square"></div>
-                  <p class="comp">Disney</p>
-                  <button class="apply"> <a>Apply</a></button>
-  
-              </div>
-            </div>
-            <div class="column">
-              <br><br>
-              <div class="cover">
-                <p class="Jpost">Digital Marketer</p>
-                <div class="square"></div>
-                <p class="comp">Disney</p>
-                <button class="apply"> <a>Apply</a></button>
-              </div>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="column">
+      <br><br>
+      <div class="cover">
+        <p class="Jpost">Digital Marketer</p>
+        <div class="square"></div>
+        <p class="comp">Disney</p>
+        <button class="apply"> <a>Apply</a></button>
+      </div>
+    </div>
+  </div>
 
-    </body>
-    <footer>
-
-    </footer>
-</html>
+{% endblock %}

@@ -1,25 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Login | WorkForce</title>
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
-
-        
-    </head>
-    <body>
-        <div class="box">
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+        <div class="box mx-auto">
             <p class="log"> Login to WorkForce</p>
        
             <form method="post" novalidate>
                 {{ form.hidden_tag() }}
-                {% for message in get_flashed_messages() %}
-                <div class="alert alert-danger my-none">{{ message }} </div><br>
-                <br>
-                {% endfor %}
-        
                 <p>
                     {{ form.username.label }}<br>
                     {{ form.username }}
@@ -41,5 +27,4 @@
             <p class="lf"><a class="lflink" href={{ url_for('signup') }}>Create Account</a></p>
       
         </div>
-    </body>
-</html>
+{% endblock %}
