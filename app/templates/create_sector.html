@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/create_sector.css') }}">
+    </head>
+    <body>
+     <div class="box">
+        <h1> Add a New Sector </h1>
+    <form method="post">
+        <p>
+            <label for="sectorname">Sector Name</label><br>
+            <input type="text" name="sectorname"
+                   placeholder="Sector Name">
+            </input>
+        </p>
+
+        <p>
+        <label for="description">Description</label>
+        <br>
+        <textarea name="Description"
+                  placeholder="Sector description| "
+                  rows="15"
+                  cols="30"
+                  ></textarea>
+        </p>
+        <p>
+            <button class="but" type="submit"><a class="alink">Submit</a></button>
+        </p>
+    </form>
+
+     </div>
+    </body>
+</html>

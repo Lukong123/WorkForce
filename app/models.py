@@ -63,6 +63,8 @@ class Sector(db.Model):
     sectorname = db.Column(db.String(64), index=True, unique=True)
     description = db.Column(db.String(200), index=True, unique=False)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    companyname = db.Column(db.Integer, db.ForeignKey('company.comapanyname'))
+
     
     def __repr__(self):
         return '<Sector {}>'.format(self.sectorname)
@@ -75,24 +77,10 @@ class Jobs(db.Model):
     job_name = db.Column(db.String(64), index=True, unique=True)
     description = db.Column(db.String(200), index=True, unique=False)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    sectorname = db.Column(db.Integer, db.ForeignKey('sector.sectorname'))
+
     
     def __repr__(self):
         return '<Sector {}>'.format(self.sectorname)
     db.create_all()
     db.session.commit()
-
-class Student(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    firstname = db.Column(db.String(100), nullable=False)
-    lastname = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(80), unique=True, nullable=False)
-    age = db.Column(db.Integer)
-    bio = db.Column(db.Text)
-
-    def __repr__(self):
-        return f'<Student {self.firstname}>'
-    
-
-    db.create_all()
-    db.session.commit()
-

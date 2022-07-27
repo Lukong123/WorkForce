@@ -52,3 +52,9 @@ class CompanyRegistrationForm(FlaskForm):
         user = Company.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
+
+
+class SectorForm(FlaskForm):
+    sectorname = StringField('Username', validators=[DataRequired()])
+    Description = StringField('Description', validators=[DataRequired()])
+    submit = SubmitField('Save')

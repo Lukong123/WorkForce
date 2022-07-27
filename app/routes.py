@@ -6,7 +6,7 @@ import os, sys
 sys.path.insert(0, os.path.abspath("."))
 from app import app
 from .forms import LoginForm, RegistrationForm, CompanyRegistrationForm
-from app.models import Company, User
+from app.models import Company, User, Sector
 from werkzeug.urls import url_parse
 from app import db
 
@@ -64,7 +64,7 @@ def signup_emp():
         login_user(comp)
         if comp.is_authenticated:
             flash('Congratulations, you just created an employer account', 'success')
-            return redirect(url_for('user_profile'))
+            return redirect(url_for('login'))
         else:
             flash('Unable to create account')
     return render_template('signup_emp.html', form=form)
@@ -116,6 +116,20 @@ def emp_dashboard():
 def sectors():
     return render_template('sectors.html', title='Sectosr')
 
+@app.route('/create_sector', methods=('GET', 'POST'))
+def create_sector():
+    if request.method == 'POST':
+        sectorname = request.form['sectorname']
+        description = request.form['description']
+        sector = Sector(sectorname=sectorname,
+                          description=description,
+                          )
+        db.session.add(sector)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    return render_template('create_sector.html')
 
 
 if __name__ == '__main__':
