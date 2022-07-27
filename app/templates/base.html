@@ -24,7 +24,7 @@
               <a href={{ url_for("login") }}>Login</a>
               {% endif %}
               {% if current_user.is_active %}
-              <a href="{{ url_for('user_profile')}}" title="Your Profile">{{ current_user.username }} </a>
+              <a href="{{ url_for('user_profile')}}" title="Your Profile">{{ current_user.username.upper() }} </a>
               {% endif %}
             </div>     
         </div>

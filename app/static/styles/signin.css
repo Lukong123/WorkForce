@@ -87,20 +87,13 @@ input[type=password] , input[type=tel]{
 .choice_but{
     background-color: #088F8F;
     border-radius: 10px;
-    border:1px solid #088F8F;
     width: 300px;
     height: 35px;
-    padding: 5px;
-    margin-bottom: 10px;
-    margin-left: 100px;
-
-}
-
-.choice_but> a{
-    color: white;
     text-decoration: none;
     font-size: 20px;
-  }
+    color: #fff;
+}
+
 .s_create{
     font-size: 20px;
     padding-left: 130px;
@@ -110,5 +103,5 @@ input[type=password] , input[type=tel]{
 .slink{
     text-decoration: none;
     color: #9B5A9A;
-    margin-left: 130px;
+    display: block;
   }

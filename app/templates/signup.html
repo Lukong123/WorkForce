@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Sign Up Client</title>
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/signin.css') }}">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
-
-        
-    </head>
-    <body>
-        <div class="box">
+{% extends "base.html" %}
+{% block content %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/signin.css') }}">
+        <div class="box mx-auto">
             <p class="workf"> WorkForce</p>
             <p class="s_create"> Create Your Free Account</p>
             <br><br>
-            <button class="choice_but"><a href={{ url_for('signup_emp')}}> Create Employer Account</a></button>
-            <button class="choice_but"><a href={{ url_for('signup_user')}}> Create User Account</a></button>
+            <a href={{ url_for('signup_emp')}}  class="choice_but p-0 my-5"><button class="btn btn-secondary"> Create Employer Account</button></a>
+            <a href={{ url_for('signup_user')}}  class="choice_but p-0 my-5 "><button class="btn btn-secondary"> Create User Account</button></a>
             
-            <!-- Already have an account link is causing an internal error-->
-
-            <a class="slink" href="">Already have an account?</a>
+            <a class="slink my-5 text-center" href="{{ url_for('login')}} ">Already have an account?</a>
         </div>
-    </body>
-</html>
+{% endblock %}
