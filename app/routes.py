@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 import os, sys
 sys.path.insert(0, os.path.abspath("."))
 from app import app
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, CompanyRegistrationForm
 from app.models import Company, User
 from werkzeug.urls import url_parse
 from app import db
@@ -36,6 +36,54 @@ def login():
         # return redirect(url_for('user_jobs'))
     return render_template('login.html', title='Sign In', form=form)
 
+@app.route('/signup_user', methods=['GET', 'POST'])
+def signup_user():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        db.create_all()
+        login_user(user)
+        if user.is_authenticated:
+            flash('Congratulations, you just created an account', 'success')
+            return redirect(url_for('user_jobs'))
+            
+    return render_template('signup_user.html', form=form)
+
+@app.route('/signup_emp', methods=['GET', 'POST'])
+def signup_emp():
+    form = CompanyRegistrationForm()
+    if form.validate_on_submit():
+        comp = Company(companyname=form.companyname.data, phonenumber=form.phonenumber.data, email=form.email.data)
+        comp.set_password(form.password.data)
+        db.session.add(comp)
+        db.session.commit()
+        db.create_all()
+        login_user(comp)
+        if comp.is_authenticated:
+            flash('Congratulations, you just created an employer account', 'success')
+            return redirect(url_for('user_profile'))
+        else:
+            flash('Unable to create account')
+    return render_template('signup_emp.html', form=form)
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now registered!')
+        login_user(user)
+        return redirect(url_for('user_jobs'))
+    return render_template('register.html', title='Register', form=form)
 
 @app.route('/logout')
 @login_required
@@ -60,55 +108,15 @@ def user_profile():
 def signup():
     return render_template('signup.html', title='Create Account')
 
+@app.route('/company_dashboard')
+def emp_dashboard():
+    return render_template('emp_dashboard.html', title='Employers Dashboard')
 
-@app.route('/signup_user', methods=['GET', 'POST'])
-def signup_user():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        db.create_all()
-        login_user(user)
-        if user.is_authenticated:
-            flash('Congratulations, you just created an account', 'success')
-            return redirect(url_for('user_jobs'))
-            
-    return render_template('signup_user.html', form=form)
-
-@app.route('/signup_emp', methods=['GET', 'POST'])
-def signup_emp():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = Company(companyname=form.companyname.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        db.create_all()
-        login_user(user)
-        if user.is_authenticated:
-            flash('Congratulations, you just created an employer account', 'success')
-            return redirect(url_for('user_profile'))
-        else:
-            flash('Unable to create account')
-    return render_template('signup_emp.html', form=form)
+@app.route('/sectors')
+def sectors():
+    return render_template('sectors.html', title='Sectosr')
 
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Congratulations, you are now registered!')
-        login_user(user)
-        return redirect(url_for('user_jobs'))
-    return render_template('register.html', title='Register', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
