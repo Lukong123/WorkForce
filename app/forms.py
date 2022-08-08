@@ -55,6 +55,6 @@ class CompanyRegistrationForm(FlaskForm):
 
 
 class SectorForm(FlaskForm):
-    sectorname = StringField('Username', validators=[DataRequired()])
-    Description = StringField('Description', validators=[DataRequired()])
+    sectorname = StringField('Sectorname', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Save')

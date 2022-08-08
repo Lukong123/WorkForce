@@ -1,5 +1,6 @@
 from datetime import datetime
 from enum import unique
+from turtle import back
 from uuid import uuid4
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -41,7 +42,7 @@ class Company(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     companynumber = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-
+    sectors = db.relationship('Sector', backref='company', lazy=True)
     def get_id(self):
         return self.user_id
 
@@ -63,7 +64,11 @@ class Sector(db.Model):
     sectorname = db.Column(db.String(64), index=True, unique=True)
     description = db.Column(db.String(200), index=True, unique=False)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    companyname = db.Column(db.Integer, db.ForeignKey('company.comapanyname'))
+    company_companyname = db.Column(db.Integer, db.ForeignKey('company.comapanyname'))
+
+    def get_id(self):
+        return self.user_id
+
 
     
     def __repr__(self):

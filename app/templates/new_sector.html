@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> New Sector </title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/signin.css') }}">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+        
+    </head>
+    <body>
+        <div class="box">
+            <p class="workf"> WorkForce</p>
+            <p class="create"> Create Sector</p>
+
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+        <p>
+                    {{ form.sectorname.label }}<br>
+                    {{ form.sectorname(size=32) }}<br>
+                    {% for error in form.sectorname.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.description.label }}<br>
+                    {{ form.description(size=100) }}<br>
+                    {% for error in form.description.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                
+                <div>{{ form.submit(class='btn btn-secondary mx-5') }}</div>
+            </form>
+
+            <p ><a class="alink" href={{ url_for('login')}}>I already have an account</a></p>
+        </div>
+    </body>
+</html>
