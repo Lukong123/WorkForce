@@ -37,14 +37,15 @@ class User(UserMixin,db.Model):
     db.session.commit()
 
 class Company(UserMixin, db.Model):
-    company_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     companyname = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     companynumber = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    sectors = db.relationship('Sector', backref='company', lazy=True)
+    sectors = db.relationship('Sector', backref='company')
+
     def get_id(self):
-        return self.user_id
+        return self.id
 
     def __repr__(self):
         return '<User {}>'.format(self.companyname)
@@ -60,29 +61,34 @@ class Company(UserMixin, db.Model):
 
 
 class Sector(db.Model):
-    sector_id = db.Column(db.Integer, primary_key=True)
-    sectorname = db.Column(db.String(64), index=True, unique=True)
-    description = db.Column(db.String(200), index=True, unique=False)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True)
+    description = db.Column(db.String(200), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    company_companyname = db.Column(db.Integer, db.ForeignKey('company.comapanyname'))
+    company = db.Column(db.Integer, db.ForeignKey('company.id'))
 
     def get_id(self):
-        return self.user_id
+        return self.id
 
 
     
     def __repr__(self):
-        return '<Sector {}>'.format(self.sectorname)
+        return '<Sector {}>'.format(self.name)
     
     db.create_all()
     db.session.commit()
 
+job_sector = db.Table('job_sector', 
+    db.Column(' job_id', db.Integer, db.ForeignKey('Job.id'), primary_key=True),
+    db.Column('sector_id', db.Integer, db.ForeignKey('Sector.id'), primary_key=True)
+)
+
 class Jobs(db.Model):
-    job_id = db.Column(db.Integer, primary_key=True)
-    job_name = db.Column(db.String(64), index=True, unique=True)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True)
     description = db.Column(db.String(200), index=True, unique=False)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    sectorname = db.Column(db.Integer, db.ForeignKey('sector.sectorname'))
+    sector = db.relationship('Sector', secondary='job_sector')
 
     
     def __repr__(self):

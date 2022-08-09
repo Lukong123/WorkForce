@@ -116,17 +116,6 @@ def emp_dashboard():
 def sectors():
     return render_template('sectors.html', title='Sector')
 
-@app.route('/create_sector', methods=('GET', 'POST'))
-def create_sector():
-    form = SectorForm()
-    if form.validate_on_submit():
-        sector = Sector(sectorname=form.sectorname.data, description=form.Description.data)
-        db.session.add(sector)
-        db.session.commit()
-        db.create_all()
-        return redirect(url_for('sectors'))
-    return render_template('new_sector.html', form=form)
-
 @app.route('/new_sector', methods=['GET', 'POST'])
 def new_sector():
     form = SectorForm()
