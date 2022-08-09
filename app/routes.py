@@ -1,6 +1,6 @@
 from turtle import title
 from urllib.parse import urlparse
-from flask import Flask, flash, redirect, render_template, url_for, request
+from flask import flash, redirect, render_template, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 import os, sys
 sys.path.insert(0, os.path.abspath("."))
