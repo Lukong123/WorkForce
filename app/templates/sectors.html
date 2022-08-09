@@ -60,11 +60,11 @@
               </div>
 
               <div class="column">
-                <br><br>
-                <a  class="big_link" href="approved.html">
-                  <div class="sector4">
+                <br><br> 
+                <a  class="big_link" href={{ url_for('new_sector' ) }}>
+                  <div class="sector4" href={{ url_for( 'new_sector' )}}>
                     <p class="big">Create New Sector</p>
-                    <p class="jclick">Just click</p>
+                    <p class="jclick" href={{ url_for('new_sector') }}>Just click</p>
     
                   </div>
                 </a>

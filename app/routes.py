@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 import os, sys
 sys.path.insert(0, os.path.abspath("."))
 from app import app
-from .forms import LoginForm, RegistrationForm, CompanyRegistrationForm
+from .forms import LoginForm, RegistrationForm, CompanyRegistrationForm, SectorForm
 from app.models import Company, User, Sector
 from werkzeug.urls import url_parse
 from app import db
@@ -114,23 +114,29 @@ def emp_dashboard():
 
 @app.route('/sectors')
 def sectors():
-    return render_template('sectors.html', title='Sectosr')
+    return render_template('sectors.html', title='Sector')
 
 @app.route('/create_sector', methods=('GET', 'POST'))
 def create_sector():
-    if request.method == 'POST':
-        sectorname = request.form['sectorname']
-        description = request.form['description']
-        sector = Sector(sectorname=sectorname,
-                          description=description,
-                          )
+    form = SectorForm()
+    if form.validate_on_submit():
+        sector = Sector(sectorname=form.sectorname.data, description=form.Description.data)
         db.session.add(sector)
         db.session.commit()
+        db.create_all()
+        return redirect(url_for('user_jobs'))
+    return render_template('new_sector.html', form=form)
 
-        return redirect(url_for('index'))
-
-    return render_template('create_sector.html')
-
+@app.route('/new_sector', methods=['GET', 'POST'])
+def new_sector():
+    form = SectorForm()
+    if form.validate_on_submit():
+        sector = Sector(sectorname=form.sectorname.data, description=form.description.data)
+        db.session.add(sector)
+        db.session.commit()
+        db.create_all()
+        return redirect(url_for('user_jobs'))
+    return render_template('new_sector.html',  title='New Sector', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
