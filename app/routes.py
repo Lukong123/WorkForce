@@ -124,7 +124,7 @@ def create_sector():
         db.session.add(sector)
         db.session.commit()
         db.create_all()
-        return redirect(url_for('user_jobs'))
+        return redirect(url_for('compangy_dashboard'))
     return render_template('new_sector.html', form=form)
 
 @app.route('/new_sector', methods=['GET', 'POST'])
@@ -135,7 +135,7 @@ def new_sector():
         db.session.add(sector)
         db.session.commit()
         db.create_all()
-        return redirect(url_for('user_jobs'))
+        return redirect(url_for('company_dashboard'))
     return render_template('new_sector.html',  title='New Sector', form=form)
 
 if __name__ == '__main__':
