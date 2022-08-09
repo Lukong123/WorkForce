@@ -29,33 +29,6 @@ body {
     color: #9B5A9A;
 }
 
-input[type=text] {
-    border: 1px solid #088F8F;
-    border-radius: 10px;
-    width: 300px;
-    height: 25px;
-    margin-left: 45px;
-    outline: none;
-}
-
-input[type=email] {
-    border: 1px solid #088F8F;
-    border-radius: 10px;
-    width: 300px;
-    height: 25px;
-    margin-left: 40px;
-    outline: none;
-}
-
-input[type=password] , input[type=tel]{
-    border: 1px solid #088F8F;
-    border-radius: 10px;
-    width: 300px;
-    height: 25px;
-    margin-left: 15px;
-    outline: none;
-}
-
 .but{
     margin-left: 180px;
     background-color: #9B5A9A;

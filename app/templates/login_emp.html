@@ -1,30 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
-        <div class="box mx-auto">
-            <p class="log"> Login to WorkForce</p>
+        <div class="box mx-auto p-3">
+            <h4 class="text-center"> Log Into Your Company's Account</h3>
        
             <form method="post" novalidate>
                 {{ form.hidden_tag() }}
-                <p>
-                    {{ form.username.label }}<br>
-                    {{ form.username }}
-                    {% for error in form.username.errors %} <br> <br>
+                <p class="mt-3">
+                    {{ form.email.label }}<br>
+                    {{ form.email }}
+                    {% for error in form.email.errors %} <br> <br>
                     <span style="color: red;">{{ error }}</span> 
                     {% endfor %}
                 </p>
                 <p>
                     {{ form.password.label }}<br>
                     {{ form.password}}
-                    {% for error in form.username.errors %} <br> <br>
+                    {% for error in form.password.errors %} <br> <br>
                     <span style="color: red; ">{{ error }}</span>
                     {% endfor %}
                 </p>
                 <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-                <a>{{ form.submit(class="but") }}</a>
+                <a>{{ form.submit(class="but btn-primary") }}</a>
             </form>
-            <p class="lf"><a class="lflink float-left mt-5" href="{{ url_for('login_emp') }}">I am an employer</a></p>
-            <p class="lf"><a class="lflink float-right mt-4" href="{{ url_for('signup') }}">Create new Account</a></p>
+            <p class="lf"><a class="lflink float-left mt-5" href="{{ url_for('login') }}">I am not an employer</a></p>
+            <p class="lf"><a class="lflink mt-4" href="{{ url_for('signup_emp') }}">Create Account</a></p>
       
         </div>
 {% endblock %}

@@ -34,6 +34,13 @@ order_product = db.Table('order_product',
 )
 
 
+class Product(db.Model):
+    """The Product table"""
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(35), nullable=False, unique=True)
+    price = db.Column(db.Integer, nullable=False)
+
+
 class Order(db.Model):
     """Orders Table"""
     id = db.Column(db.Integer, primary_key=True)
@@ -45,12 +52,6 @@ class Order(db.Model):
 
     products = db.relationship('Product', secondary='order_product')
 
-
-class Product(db.Model):
-    """The Product table"""
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(35), nullable=False, unique=True)
-    price = db.Column(db.Integer, nullable=False)
 
 
                         ########### DRIVER CODE ############

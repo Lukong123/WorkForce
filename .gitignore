@@ -4,5 +4,6 @@
 *.png
 *.jpeg
 *.jpg
-*__pycache__*
+/__pycache__
 
+.gitignore

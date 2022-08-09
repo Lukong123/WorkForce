@@ -29,23 +29,6 @@ body {
     color: #FF8749;
 }
 
-input[type=text] {
-    border: 1px solid #088F8F;
-    border-radius: 10px;
-    margin-top: 5px;
-    width: 300px;
-    height: 30px;
-    outline: none;
-}
-
-input[type=password] {
-    border: 1px solid #088F8F;
-    border-radius: 10px;
-    margin-top: 5px;
-    width: 300px;
-    height: 30px;
-    outline: none;
-}
 
 .but{
     margin-left: 110px;

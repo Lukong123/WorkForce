@@ -16,27 +16,24 @@
 
 <body>
 
-    <div class="box">
+    <div class="box border bg-light p-3">
         {% for message in get_flashed_messages() %}
         <div class="alert alert-success text-center">{{ message }} </div><br>
         {% endfor %}
         <p class="workf"> WorkForce</p>
-        <p class="create"> Create An Employer Account</p>
-        <form>
-            <label for="Cname"> Company's Name</label>
-            <input type="text" , id="c_name"> <br><br>
-            <label for="email">Email Address </label>
-            <input type="email" , id="c_email"> <br><br>
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="c_tel"> <br><br><br>
-            <label for="u_pwd"> Password</label>
-            <input type="password" name="pwd" id="c_pwd"><br><br>
-            <label for="u_pwd">Confirm Password</label>
-            <input type="password" name="pwd" id="c_pwd">
-            {{form.submit(class='but')}}
-
+        <p class="text-secondary text-center"> Create An Employer Account</p>
+        <form method="post mx-auto p-5 bg-danger" style="width: fit-content;">
+            {{ form.companyname.label() }} <br>
+            {{ form.companyname(size=50, class='m-2') }} <br>
+            {{ form.email.label }} <br>
+            {{ form.email(size=50, class='m-2') }} <br>
+            {{ form.password.label }} <br>
+            {{ form.password(size=50, class='m-2') }} <br>
+            {{ form.password2.label }} <br>
+            {{ form.password2(size=50, class='m-2') }} <br>
+            {{form.submit(class='btn btn-secondary float-right mr-2')}}
         </form>
-        <p><a class="alink" href={{ url_for('login')}}>Already have an account?</a></p>
+        <a class="alink" href="{{ url_for('login')}}">Already have an account?</a>
         <!-- <button class="but"><a href="#"> Create Account</a></button> -->
     </div>
 </body>

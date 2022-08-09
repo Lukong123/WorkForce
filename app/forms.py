@@ -9,6 +9,14 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
+
+class LoginCompany(FlaskForm):
+    email = StringField('Company\'s email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Login')
+
+
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -32,7 +40,7 @@ class RegistrationForm(FlaskForm):
 
 
 class CompanyRegistrationForm(FlaskForm):
-    companyname = StringField('Username', validators=[DataRequired()])
+    companyname = StringField('Name of your Company', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     phonenumber = StringField('Phone', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
