@@ -1,41 +1,21 @@
-<!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Employer Account | Workforce</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/signin.css') }}">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-
-    <div class="box border bg-light p-3">
+    <form method="post" class=" mx-auto p-5 bg-light border my-5" style="width: fit-content;">
         {% for message in get_flashed_messages() %}
-        <div class="alert alert-success text-center">{{ message }} </div><br>
+        <div class="alert alert-secondary text-center">{{ message }} </div><br>
         {% endfor %}
-        <p class="workf"> WorkForce</p>
+        <p class="text-primary text-center font-weight-bold"> WorkForce</p>
         <p class="text-secondary text-center"> Create An Employer Account</p>
-        <form method="post mx-auto p-5 bg-danger" style="width: fit-content;">
-            {{ form.companyname.label() }} <br>
-            {{ form.companyname(size=50, class='m-2') }} <br>
-            {{ form.email.label }} <br>
-            {{ form.email(size=50, class='m-2') }} <br>
-            {{ form.password.label }} <br>
-            {{ form.password(size=50, class='m-2') }} <br>
-            {{ form.password2.label }} <br>
-            {{ form.password2(size=50, class='m-2') }} <br>
-            {{form.submit(class='btn btn-secondary float-right mr-2')}}
-        </form>
-        <a class="alink" href="{{ url_for('login')}}">Already have an account?</a>
-        <!-- <button class="but"><a href="#"> Create Account</a></button> -->
-    </div>
-</body>
-
-</html>
+        {{ form.name.label() }}: <br>
+        {{ form.name(size=50, class='m-2') }} <br>
+        {{ form.email.label }}: <br>
+        {{ form.email(size=50, class='m-2') }} <br>
+        {{ form.password.label }}: <br>
+        {{ form.password(size=50, class='m-2') }} <br>
+        {{ form.password2.label }}: <br>
+        {{ form.password2(size=50, class='m-2') }} <br>
+        {{form.submit(class='btn btn-primary float-right mr-2')}}
+        <div class="btn btn-white border mr-2" onclick="history.back()">Cancel</div><a class="alink" href="{{ url_for('login_emp')}}">Already have an account?</a>
+    </form>
+{% endblock %}

@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/emp_dashboard.css') }}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Margarine&family=Roboto:wght@400&display=swap" rel="stylesheet">
-
-    </head>
-    <body>
-        <div class="nav">
-            <div class="nav-left">
-                <a id="work" href="#work">WorkForce</a>
-            </div>
-            <div class="nav-right">
-              <a class="active" href="{{ url_for('emp_dashboard') }}">Dashboard</a>
-              <a href="{{ url_for('sectors') }}"> Sectors</a>
-              <a href="{{ url_for('user_jobs') }}"> Jobs</a>
-              <a href="">Candidates</a>
-              <a href="{{ url_for('user_profile') }}">Profile</a>
-            </div>     
-        </div>
-        <br><br><br>
-        <div class="container">
+   
+   {% extends "base.html" %}
+   {% block content %}
+   <div class="container mt-4">
             <div class="column">
               <br><br>
               <a class = "big_link" href="emp_jobs.html">
@@ -60,9 +39,4 @@
               </div>
 
          </div>
-
-    </body>
-    <footer>
-
-    </footer>
-</html>
+{% endblock %}

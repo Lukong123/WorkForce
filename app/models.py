@@ -1,12 +1,8 @@
 from datetime import datetime
-from enum import unique
-from turtle import back
-from uuid import uuid4
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
-from app import app
 
 
 @login.user_loader
@@ -15,57 +11,38 @@ def load_user(id):
 
 
 class User(UserMixin, db.Model):
-    user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), index=True, unique=True)
-    email = db.Column(db.String(120), index=True, unique=True)
-    password_hash = db.Column(db.String(128))
-    # id = str(uuid4)
-
-    def get_id(self):
-        return self.user_id
-
-    def __repr__(self):
-        return '<User {}>'.format(self.username)
-    
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
-
-
-class Company(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    companyname = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
-    companynumber = db.Column(db.String(64), index=True, unique=True)
+    name = db.Column(db.String(64), index=True, unique=True)
+    tel = db.Column(db.String(64), index=True, unique=True)
+    role = db.Column(db.String(20))
     password_hash = db.Column(db.String(128))
-    sector_id = db.relationship('Sector', backref='company')
+    sector_id = db.relationship('Sector', backref='user')
 
     def get_id(self):
         return self.id
 
     def __repr__(self):
-        return '<User {}>'.format(self.companyname)
-    
+        return '<User {}>'.format(self.name)
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-    
+
 
 class Sector(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True)
     description = db.Column(db.String(200), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+    company_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     job = db.relationship('Jobs', secondary='job_sector')
 
     def get_id(self):
         return self.id
-    
+
     def __repr__(self):
         return '<Sector {}>'.format(self.name)
 

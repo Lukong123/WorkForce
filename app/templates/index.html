@@ -1,25 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
-        <div class="cont row justify-content-center">
-            <div class="column col-4">
-              <br><br>
-              
-              <p class="wel">Welcome to</p>
-              <p class="work">WorkForce</p>
-              <p>
-                We provide you an easy to use interface <br> which makes work easy for both the Employer
-                <br> and candidates!!! 
-              </p>
+<div class="cont row justify-content-center">
+  <div class="column col-4">
+    <br><br>
 
-              <button class="sign"><a href={{ url_for('signup') }}> Sign Up</a></button>
+    <p class="wel">Welcome to</p>
+    <p class="work">WorkForce</p>
+    <p>
+      We provide you an easy to use interface <br> which makes work easy for both the Employer
+      <br> and candidates!!!
+    </p>
+<h3 class="text-dark ">How do you want to start?</h3>
+    <a class="btn btn-primary m-3 p-3" href="{{ url_for('signup') }}"> Sign Up (Candidate)</a>
+    <a class="btn btn-primary m-3 p-3 float-right" href="{{ url_for('login') }}"> Login (Candidate)</a> <br>
+    <a class="btn btn-primary m-3 p-3" href="{{ url_for('signup_emp') }}"> Sign Up (Employer)</a>
+    <a class="btn btn-primary m-3 p-3 float-right" href="{{ url_for('login_emp') }}"> Log In (Employer)</a>
 
-            </div>
-            <div class="col-4">
-              <div class="set_img">
-                <br><br><br><br><br><br><br>
-                <img  src="{{ url_for('static', filename='images/workset.png') }}"/>
-
-              </div>
-            </div>
-          </div>
+  </div>
+  <div class="col-4">
+    <div class="set_img">
+      <br><br><br><br><br><br><br>
+      <img src="{{ url_for('static', filename='images/workset.png') }}" />
+    </div>
+  </div>
+</div>
 {% endblock %}

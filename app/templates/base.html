@@ -3,6 +3,7 @@
     <head>
         <title>{{ title }} | WorkForce</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/emp_dashboard.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -12,19 +13,22 @@
     <body>
         <div class="nav py-3">
             <div class="nav-left">
-                <a id="work" href="/">WorkForce</a>
+                <a id="work" href="/">WorkForce </a>
+                 {% if current_user.is_active %}
+                 <br><div class="ml-3 text-white"> For {{ current_user.role }}s</div>
+                 {% endif %}
             </div>
             <div class="nav-right float-end">
               <a class="active" href="/">Home</a>
               <a href="#about">About Us</a>
               <a href="#contact">Contact Us</a>
               {% if current_user.is_active %}
-              <a href={{ url_for("logout") }}>Logout</a>
+              <a href='{{ url_for("logout") }}'>Logout</a>
               {% else %}
-              <a href={{ url_for("login") }}>Login</a>
+              <a href='{{ url_for("login") }}'>Login</a>
               {% endif %}
               {% if current_user.is_active %}
-              <a href="{{ url_for('user_profile')}}" title="Your Profile">{{ current_user.username.upper() }} </a>
+              <a href="{{ url_for('user_profile')}}" title="Your Profile">{{ current_user.name.upper() }} </a>
               {% endif %}
             </div>     
         </div>
